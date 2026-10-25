@@ -5,6 +5,7 @@ All notable changes to MGSV: Joint Operations. Versions follow [HP-SOP-003](docs
 ## Site 1.8.0 · Own quarters · 2026-10-25
 - **The website has its own repository:** the site code, build tools, tests and this changelog moved to [joint-operations-web](https://github.com/Hound-Protocol/joint-operations-web). The [Joint-Operations](https://github.com/Hound-Protocol/Joint-Operations) repository is for the mod itself: its documents, research, handbook and project records.
 - **New address:** https://hound-protocol.github.io/joint-operations-web/. The old address forwards every page to the same page here, keeping links in Discord and elsewhere working.
+- **Organization documents moved to Hound Protocol:** Team, Governance, Departments and Grades, the Code of Conduct, Brand and decisions 0009, 0013, 0015 and 0016 apply to every Hound Protocol project, so they now live on the [Hound Protocol website](https://hound-protocol.github.io/hound-protocol-web/docs.html). The Team page links there.
 - **Records moved:** contracts, contributor records, certificates, infractions, staff and the library and handbook indexes now live in the mod repository's `data/` folder. The site reads them at build time, and redeploys every three hours so document changes reach it without a site release.
 
 ## Site 1.7.1 · Back to the mod · 2026-10-25

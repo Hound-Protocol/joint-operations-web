@@ -2213,7 +2213,7 @@
         }).join("") + "</div></div>";
       }).join("") + "</div>" +
       '<div class="auth-key">' + Object.keys(A).map(function (k) { return '<span><i class="au ' + k + '">' + esc(A[k][0]) + "</i>" + esc(A[k][1]) + "</span>"; }).join("") + "</div>" +
-      '<p class="source">Authority only flows down, and only in its own kind. Anyone can talk to anyone. See <a href="#/guides/hp-pol-007">HP-POL-007 Chain of Command</a> and <a href="#/docs/departments">departments and grades</a>.</p></section>';
+      '<p class="source">Authority only flows down, and only in its own kind. Anyone can talk to anyone. See <a href="#/guides/hp-pol-007">HP-POL-007 Chain of Command</a> and <a href="https://hound-protocol.github.io/hound-protocol-web/docs.html#departments">departments and grades</a>.</p></section>';
   }
 
   // Open positions, grouped by department: seats show filled slots; open roles take anyone
@@ -2236,7 +2236,7 @@
             '<div class="pos-who">' + (p.holders.length ? esc(p.holders.join(", ")) : p.kind === "seat" ? "Vacant" : "Anyone") + (pips ? '<span class="pips" aria-label="' + p.holders.length + " of " + p.need + ' filled">' + pips + "</span>" : "") + "</div>" + state + "</div>";
         }).join("") + "</section>";
       }).join("") + "</div>" +
-      '<div class="toolbar" style="margin-top:18px"><a class="btn primary" href="#/contribute">Join the Hound</a><a class="btn" href="#/docs/governance">How seats work</a></div></section>';
+      '<div class="toolbar" style="margin-top:18px"><a class="btn primary" href="#/contribute">Join the Hound</a><a class="btn" href="https://hound-protocol.github.io/hound-protocol-web/docs.html#governance">How seats work</a></div></section>';
   }
 
   // Contractors active in the last 7 days, from signed contributor records (live from data/records.json)
