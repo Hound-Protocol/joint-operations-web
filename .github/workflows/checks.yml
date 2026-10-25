@@ -1,0 +1,83 @@
+name: Checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Check out the mod repository
+        uses: actions/checkout@v7
+        with:
+          repository: Hound-Protocol/Joint-Operations
+          path: _mod
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Validate data files
+        run: for f in site/data/*.json; do python3 -c "import json,sys; json.load(open(sys.argv[1]))" "$f"; done
+      - name: Site script is built from its modules
+        run: python3 tools/build_js.py --check
+      - name: Check site script syntax
+        run: node -e "new Function(require('fs').readFileSync('site/assets/js/app.js','utf8'))"
+      - name: Relay tests (guest passes, requests, health; no network)
+        run: node tests/relay_test.mjs
+      - name: CSS fallbacks for older browsers
+        run: python3 tools/css_compat.py --check
+      - name: Changelog updated with every release (HP-SOP-003)
+        if: github.event_name == 'pull_request'
+        env:
+          BASE: ${{ github.base_ref }}
+        run: |
+          git fetch -q --depth=50 origin "$BASE"
+          if git diff "origin/$BASE" -- site/data/config.json | grep -q '^[-+].*"version"'; then
+            python3 tools/release_notes.py /tmp/notes.md >/dev/null
+          fi
+          echo "Release check passed."
+      - name: Build single-file site
+        run: |
+          python3 tools/sync_mod.py _mod
+          python3 tools/bundle_site.py _bundle.html
+
+  browsers:
+    name: Browsers (Chromium, Firefox, WebKit)
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Check out the mod repository
+        uses: actions/checkout@v7
+        with:
+          repository: Hound-Protocol/Joint-Operations
+          path: _mod
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Install font tools
+        run: pip install fonttools brotli
+      - name: Assemble site
+        run: |
+          python3 tools/sync_mod.py _mod
+          python3 tools/assemble_site.py _site --woff2
+      - name: Smoke test in all engines
+        timeout-minutes: 20
+        run: |
+          docker run --rm -v "$PWD:/w" -w /w mcr.microsoft.com/playwright/python:v1.52.0-noble \
+            bash -c 'python3 -c "import playwright" 2>/dev/null || pip install -q --break-system-packages playwright==1.52.0; python3 tests/browser_smoke.py _site chromium firefox webkit && python3 tests/screens.py _site _screens'
+      - name: Keep the screenshots for review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screens
+          path: _screens/
+          if-no-files-found: ignore
+          retention-days: 14

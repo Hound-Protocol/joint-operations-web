@@ -1,0 +1,347 @@
+{
+ "note": "Team page. Images live in site/assets/img/team/. The chain of command follows docs/guides/HP-POL-007 (ADR 0013), departments follow docs/departments.md, seats follow docs/governance.md. Open positions: positions (seats have a number of holders needed; open roles take anyone).",
+ "members": [
+  {
+   "name": "TrueMan",
+   "role": "Founder · Project lead",
+   "image": "assets/img/team/trueman.webp",
+   "still": "assets/img/team/trueman.jpg",
+   "bio": "Founded Hound Protocol and Joint Operations. Sets the direction, the priorities and the final decisions."
+  }
+ ],
+ "seats": [
+  {
+   "seat": "Project lead",
+   "need": 1,
+   "holders": [
+    "TrueMan"
+   ]
+  },
+  {
+   "seat": "Technical lead",
+   "need": 1,
+   "holders": []
+  },
+  {
+   "seat": "GitHub organization owner",
+   "need": 2,
+   "holders": [
+    "TrueMan"
+   ]
+  },
+  {
+   "seat": "Discord admin",
+   "need": 2,
+   "holders": []
+  },
+  {
+   "seat": "Release signer",
+   "need": 2,
+   "holders": []
+  },
+  {
+   "seat": "Moderator",
+   "need": 2,
+   "holders": []
+  }
+ ],
+ "roles": [
+  "Windows testers (Quality)",
+  "Proton testers (Quality)",
+  "Reviewers (Quality)",
+  "Moderators (Administration, after the playable prototype)",
+  "Technical lead (Development, after the playable prototype)"
+ ],
+ "departments": [
+  {
+   "id": "admin",
+   "name": "Administration",
+   "code": "ADM",
+   "job": "Direction, decisions, legal stance, funding, accounts, community and moderation.",
+   "units": [
+    "Command",
+    "Community",
+    "Legal and Funding"
+   ],
+   "members": [
+    "TrueMan"
+   ],
+   "open": "Discord admins and moderators, after the playable prototype"
+  },
+  {
+   "id": "dev",
+   "name": "Development",
+   "code": "DEV",
+   "job": "Builds Joint Operations: architecture, game hooks, networking, session, launcher, tools and website.",
+   "units": [
+    "Hooks and RE",
+    "Networking",
+    "Session",
+    "Tools and Launcher",
+    "Web"
+   ],
+   "members": [
+    "TrueMan"
+   ],
+   "open": "Technical lead, after the playable prototype"
+  },
+  {
+   "id": "qa",
+   "name": "Quality",
+   "code": "QA",
+   "job": "Tests on Windows and Proton, reviews every contract against its acceptance criteria, signs off releases.",
+   "units": [
+    "Windows Testing",
+    "Proton Testing",
+    "Review",
+    "Release QA"
+   ],
+   "members": [],
+   "open": "Testers and reviewers wanted now"
+  },
+  {
+   "id": "con",
+   "name": "Contractor",
+   "code": "CON",
+   "job": "Outside contributors who take contracts, deliver and leave whenever they like. Graded E to S++ in each field. AI agents work here as tools of the person using them.",
+   "units": [
+    "Open to any skill"
+   ],
+   "members": [
+    "Claude (AI agent, used by TrueMan)"
+   ],
+   "open": "Opens after 0.1"
+  }
+ ],
+ "principles": [
+  [
+   "Solid hierarchy",
+   "Everyone knows who decides what. Authority only flows down, and only in its own kind."
+  ],
+  [
+   "Open communication",
+   "Anyone can talk to anyone, at any level. Public by default."
+  ],
+  [
+   "Transparency",
+   "Decisions are written down with who and why. Moderation is logged. Roles are public."
+  ]
+ ],
+ "authority": {
+  "social": [
+   "Social",
+   "Conduct, moderation, community spaces, disputes between people"
+  ],
+  "technical": [
+   "Technical",
+   "Architecture, code, merges, contract scope, releases"
+  ],
+  "organizational": [
+   "Organizational",
+   "Roles, keycards, seats, recruiting, funding, legal stance"
+  ]
+ },
+ "hierarchy": [
+  {
+   "card": "LV7",
+   "nodes": [
+    {
+     "title": "Owner",
+     "sub": "Project lead",
+     "dept": "admin",
+     "authority": [
+      "social",
+      "technical",
+      "organizational"
+     ],
+     "holders": [
+      "TrueMan"
+     ],
+     "job": "Final say in every kind of authority, and the last step of every appeal."
+    }
+   ]
+  },
+  {
+   "card": "LV6",
+   "nodes": [
+    {
+     "title": "Administration",
+     "sub": "Department",
+     "dept": "admin",
+     "authority": [
+      "social",
+      "technical",
+      "organizational"
+     ],
+     "holders": [
+      "TrueMan"
+     ],
+     "job": "Runs the project: direction, accounts, recruiting, funding. Grants keycards up to LV5.",
+     "open": "Discord admins, after the playable prototype"
+    },
+    {
+     "title": "Moderators",
+     "sub": "Administration",
+     "dept": "admin",
+     "authority": [
+      "social"
+     ],
+     "holders": [],
+     "job": "Keep the community safe. Decide on conduct and disputes, and log every action.",
+     "open": "2 seats, after the playable prototype"
+    }
+   ]
+  },
+  {
+   "card": "LV5",
+   "nodes": [
+    {
+     "title": "Development",
+     "sub": "Department",
+     "dept": "dev",
+     "authority": [
+      "technical"
+     ],
+     "holders": [
+      "TrueMan"
+     ],
+     "job": "Builds Joint Operations. Decides architecture, code, merges and contract scope.",
+     "open": "Technical lead, after the playable prototype"
+    }
+   ]
+  },
+  {
+   "card": "LV4",
+   "nodes": [
+    {
+     "title": "Quality",
+     "sub": "Department",
+     "dept": "qa",
+     "authority": [],
+     "holders": [],
+     "job": "Tests and checks every delivery against its acceptance criteria. A failed check stops a release until it is fixed.",
+     "open": "Testers and reviewers wanted now"
+    }
+   ]
+  },
+  {
+   "card": "LV3",
+   "nodes": [
+    {
+     "title": "Contractors",
+     "sub": "Contractor Department",
+     "dept": "con",
+     "authority": [],
+     "holders": [
+      "Claude (AI agent, used by TrueMan)"
+     ],
+     "job": "Take contracts and deliver them. Graded E to S++ in each field; grades show experience, not authority. AI agents are contractors' tools: work is credited to the person, with the agent named.",
+     "open": "Opens after 0.1"
+    }
+   ]
+  },
+  {
+   "card": "LV2",
+   "nodes": [
+    {
+     "title": "Members",
+     "sub": "Signed in",
+     "authority": [],
+     "holders": [],
+     "job": "Everyone in the community. Can talk to anyone, follow sessions and report problems."
+    }
+   ]
+  }
+ ],
+ "positions": [
+  {
+   "dept": "Administration",
+   "title": "Project lead",
+   "need": 1,
+   "holders": [
+    "TrueMan"
+   ],
+   "kind": "seat",
+   "about": "Final decisions, legal stance, funding"
+  },
+  {
+   "dept": "Administration",
+   "title": "GitHub organization owner",
+   "need": 2,
+   "holders": [
+    "TrueMan"
+   ],
+   "kind": "seat",
+   "about": "Account control and repository settings",
+   "after": "prototype"
+  },
+  {
+   "dept": "Administration",
+   "title": "Discord admin",
+   "need": 2,
+   "holders": [],
+   "kind": "seat",
+   "about": "Server control, moderation escalation",
+   "after": "prototype"
+  },
+  {
+   "dept": "Administration",
+   "title": "Moderator",
+   "need": 2,
+   "holders": [],
+   "kind": "seat",
+   "about": "Community safety, social decisions",
+   "after": "prototype"
+  },
+  {
+   "dept": "Development",
+   "title": "Technical lead",
+   "need": 1,
+   "holders": [],
+   "kind": "seat",
+   "about": "Technical direction, architecture, merge approval",
+   "after": "prototype"
+  },
+  {
+   "dept": "Quality",
+   "title": "Release signer",
+   "need": 2,
+   "holders": [],
+   "kind": "seat",
+   "about": "Approves and publishes releases",
+   "after": "prototype"
+  },
+  {
+   "dept": "Quality",
+   "title": "Windows testers",
+   "need": null,
+   "holders": [],
+   "kind": "open",
+   "about": "Test builds on Windows 10 and 11"
+  },
+  {
+   "dept": "Quality",
+   "title": "Proton testers",
+   "need": null,
+   "holders": [],
+   "kind": "open",
+   "about": "Test on Linux, Steam Deck and Bazzite"
+  },
+  {
+   "dept": "Quality",
+   "title": "Reviewers",
+   "need": null,
+   "holders": [],
+   "kind": "open",
+   "about": "Check contracts against their acceptance criteria"
+  },
+  {
+   "dept": "Contractor",
+   "title": "Contractors",
+   "need": null,
+   "holders": [],
+   "kind": "later",
+   "about": "Take contracts and deliver them. Opens with version 0.1"
+  }
+ ]
+}

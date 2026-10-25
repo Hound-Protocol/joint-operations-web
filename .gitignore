@@ -1,0 +1,29 @@
+# Synced from the mod repository by tools/sync_mod.py (never committed here)
+mod-content/
+site/data/contracts.json
+site/data/records.json
+site/data/records-key.json
+site/data/certificates.json
+site/data/infractions.json
+site/data/staff.json
+site/data/docs.json
+site/data/guides.json
+
+# Site build output
+_site/
+_bundle.html
+hound-protocol.html
+joint-operations.html
+site/content/
+site/data/build.json
+
+# Local tooling
+.env
+*.log
+.DS_Store
+Thumbs.db
+node_modules/
+__pycache__/
+*.pyc
+_mod/
+_screens/

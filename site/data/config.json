@@ -1,0 +1,210 @@
+{
+  "project": "Joint Operations",
+  "team": "Hound Protocol",
+  "tagline": "Metal Gear Solid V, now with up to 16 players",
+  "version": "1.8.0",
+  "stage": "Mod 0.1 in development",
+  "repo": "Hound-Protocol/Joint-Operations",
+  "branch": "main",
+  "siteUrl": "https://hound-protocol.github.io/joint-operations-web/",
+  "logo": {
+    "src": "",
+    "alt": "Joint Operations logo",
+    "opacity": 0.18
+  },
+  "links": {
+    "discord": "https://discord.gg/QTpJ89kMCM",
+    "discordIcon": "",
+    "github": "https://github.com/Hound-Protocol/Joint-Operations",
+    "discordGuildId": ""
+  },
+  "milestones": {
+    "download": "Nothing to download yet. The first playable version, 0.1, is in development.",
+    "sessions": "Sessions go live with version 0.1. Hosts will list their games here, and players join in one click.",
+    "mods": "The mod list opens with the Mod API. You can already send a mod for review."
+  },
+  "cacheMinutes": 10,
+  "about": {
+    "project": {
+      "label": "The project",
+      "title": "Joint Operations",
+      "text": "A multiplayer mod for Metal Gear Solid V: The Phantom Pain. The host runs the missions. Up to 15 clients share the session in the same open world.",
+      "facts": [
+        [
+          "Players",
+          "Up to 16"
+        ],
+        [
+          "Platforms",
+          "Windows · Linux"
+        ],
+        [
+          "Price",
+          "Free and open source"
+        ],
+        [
+          "Status",
+          "In development"
+        ]
+      ],
+      "link": [
+        "Learn more",
+        "#/briefing"
+      ]
+    },
+    "team": {
+      "label": "The team",
+      "title": "Hound Protocol",
+      "text": "A community-focused organization. We build ambitious projects, one of them being Joint Operations. Four departments run it: Administration, Development, Quality and Contractors. Take a contract, deliver it, and earn your grade, from E to S++.",
+      "facts": [
+        [
+          "Departments",
+          "4"
+        ],
+        [
+          "Contractor grades",
+          "E to S++"
+        ],
+        [
+          "Testers",
+          "Wanted now"
+        ]
+      ],
+      "link": [
+        "Explore the Hound",
+        "https://hound-protocol.github.io/hound-protocol-web/"
+      ]
+    }
+  },
+  "signin": {
+    "relay": "https://hp-signin.trueman-truetown.workers.dev",
+    "areas": [
+      {
+        "repo": "Hound-Protocol/hp-staff",
+        "card": "LV3",
+        "title": "Staff"
+      },
+      {
+        "repo": "Hound-Protocol/hp-leads",
+        "card": "LV5",
+        "title": "Leads"
+      },
+      {
+        "repo": "Hound-Protocol/hp-admin",
+        "card": "LV6",
+        "title": "Administration"
+      }
+    ],
+    "access": [
+      {
+        "card": "LV1",
+        "items": [
+          {
+            "t": "Read every section, the Library and the Handbook"
+          },
+          {
+            "t": "Request a guest pass",
+            "s": "LV2, LV3, LV5 or LV6, approved by LV7"
+          }
+        ]
+      },
+      {
+        "card": "LV2",
+        "items": [
+          {
+            "t": "Your profile and keycard"
+          },
+          {
+            "t": "Claim contracts and download builds"
+          },
+          {
+            "t": "Report content",
+            "s": "Planned"
+          },
+          {
+            "t": "Follow sessions",
+            "s": "With the session browser"
+          }
+        ]
+      },
+      {
+        "card": "LV3",
+        "items": [
+          {
+            "area": 0
+          },
+          {
+            "t": "Claim contracts",
+            "s": "After 0.1"
+          },
+          {
+            "t": "Upload mods for review",
+            "s": "Planned"
+          }
+        ]
+      },
+      {
+        "card": "LV4",
+        "items": [
+          {
+            "t": "Review queue: approve or reject mods",
+            "s": "Planned"
+          },
+          {
+            "t": "Triage bug reports"
+          }
+        ]
+      },
+      {
+        "card": "LV5",
+        "items": [
+          {
+            "area": 1
+          },
+          {
+            "t": "Edit contract and site data"
+          },
+          {
+            "t": "Manage sessions and the registry",
+            "s": "With the session browser"
+          }
+        ]
+      },
+      {
+        "card": "LV6",
+        "items": [
+          {
+            "area": 2
+          },
+          {
+            "t": "Moderate people and content"
+          },
+          {
+            "t": "Grant cards up to LV5"
+          }
+        ]
+      },
+      {
+        "card": "LV7",
+        "items": [
+          {
+            "t": "Everything, including LV6 and LV7 cards"
+          },
+          {
+            "t": "Publish releases"
+          },
+          {
+            "t": "Hold the records signing key"
+          }
+        ]
+      }
+    ],
+    "owner": 249122176,
+    "ownerCard": {
+      "login": "Forge77",
+      "name": "TrueMan",
+      "department": "Administration"
+    },
+    "relayVersion": 4
+  }
+}

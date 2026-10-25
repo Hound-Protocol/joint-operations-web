@@ -1,0 +1,4 @@
+{
+  "note": "Session list. Empty until the session service exists. Fields: name, host, details, players, maxPlayers, status, ping, region.",
+  "servers": []
+}

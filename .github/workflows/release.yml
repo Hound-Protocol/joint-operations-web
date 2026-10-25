@@ -1,0 +1,67 @@
+name: Release
+
+# Publishes a GitHub release when the version in site/data/config.json changes on main.
+# Notes come from CHANGELOG.md. See HP-SOP-003 in the Joint Operations handbook.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "site/data/config.json"
+      - "CHANGELOG.md"
+      - ".github/workflows/release.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Read version and notes
+        id: v
+        run: |
+          out=$(python3 tools/release_notes.py notes.md)
+          echo "tag=$(echo "$out" | sed -n 1p)" >> "$GITHUB_OUTPUT"
+          echo "title=$(echo "$out" | sed -n 2p)" >> "$GITHUB_OUTPUT"
+          echo "channel=$(echo "$out" | sed -n 3p)" >> "$GITHUB_OUTPUT"
+      - name: Publish if this version has no release yet
+        id: pub
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.v.outputs.tag }}
+          TITLE: ${{ steps.v.outputs.title }}
+          CHANNEL: ${{ steps.v.outputs.channel }}
+        run: |
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "Release $TAG already exists. Nothing to do."
+            echo "done=no" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          flag=""
+          [ "$CHANNEL" = "prerelease" ] && flag="--prerelease"
+          # Website releases never take GitHub's Latest label: that is kept for the mod's builds
+          [ "$CHANNEL" = "site" ] && flag="--latest=false"
+          gh release create "$TAG" --target "$GITHUB_SHA" --title "$TITLE" --notes-file notes.md $flag
+          echo "Published $TAG"
+          echo "done=yes" >> "$GITHUB_OUTPUT"
+      - name: Announce on Discord
+        if: ${{ steps.pub.outputs.done == 'yes' }}
+        env:
+          HOOK: ${{ secrets.DISCORD_RELEASE_WEBHOOK }}
+          TAG: ${{ steps.v.outputs.tag }}
+          TITLE: ${{ steps.v.outputs.title }}
+          REPO: ${{ github.repository }}
+        run: |
+          if [ -z "$HOOK" ]; then echo "No DISCORD_RELEASE_WEBHOOK secret set. Skipping."; exit 0; fi
+          url="https://github.com/$REPO/releases/tag/$TAG"
+          site=$(python3 -c "import json;print(json.load(open('site/data/config.json'))['siteUrl'])")
+          body=$(python3 -c "import json,os,sys;print(json.dumps({'content': '**' + os.environ['TITLE'] + '** is out.\n' + sys.argv[1] + '\nWebsite: ' + sys.argv[2], 'allowed_mentions': {'parse': []}}))" "$url" "$site")
+          curl -fsS -H "Content-Type: application/json" -d "$body" "$HOOK" >/dev/null && echo "Posted to Discord"

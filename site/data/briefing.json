@@ -1,0 +1,8 @@
+{
+ "note": "Text for the About page. Wrap a key term in {{double braces}} to color-code it. Use sparingly.",
+ "headline": "Bring your squad into {{The Phantom Pain}}. Up to {{16 players}}.",
+ "summary": [
+  "Joint Operations adds online multiplayer to the single-player game. The host runs the missions. Up to 15 clients share the session: the same open world, the same missions and the same Mother Base.",
+  "It's free, it's open source, and it never touches Konami's servers."
+ ]
+}
